@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http'
 import { tap, catchError } from 'rxjs/operators'
 import { BehaviorSubject, throwError } from 'rxjs'
 import { Router } from '@angular/router';
-import { environment } from '../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,7 @@ export class AuthenticationService {
 
   user: User = null;
   isUserAuthenticated = new BehaviorSubject<boolean>(false);
-  url: string = `${environment.apiUrl}/user`;
+  url: string = `/user`;
   constructor(private http: HttpClient, 
               private router: Router) { }
 

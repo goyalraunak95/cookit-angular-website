@@ -13,8 +13,8 @@ import { environment } from '../../environments/environment'
 })
 export class DataStoreService {
 
-  url: string = `${environment.apiUrl}/recipe`;
-  urlforBookmark: string = `${environment.apiUrl}/user`
+  url: string = `/recipe`;
+  urlforBookmark: string = `/user`
   constructor(private http: HttpClient, 
               private recipeService: RecipeService, 
               private authenticationService: AuthenticationService) { }
