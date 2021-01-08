@@ -1,0 +1,21 @@
+.bookmark{
+    height:30px;
+    position: relative;
+    top:0px;
+    float: right;
+    right:20px;
+    width:20px;
+  }
+  
+  .bookmark:after{
+      content:'';
+      display:block;
+      border:10px solid transparent;
+      border-bottom-color: white;
+      position:absolute;
+      bottom:0;
+    }
+  
+  .recipedetail{
+      font-size: medium;
+  }

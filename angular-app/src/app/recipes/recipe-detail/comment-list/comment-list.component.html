@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form 
+        (ngSubmit) = "onSubmit(f)" 
+        #f = "ngForm">
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        name="data" 
+                        ngModel 
+                        required
+                        placeholder="Add a Comment">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button 
+                    type="submit" 
+                    class="btn btn-success" 
+                    [disabled] = "!f.valid"> Submit
+                </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+<h4>Comments - {{commentNum}}</h4>
+<div class="row">
+    <div class="col-xs-12">
+        <app-comment-item *ngFor="let comment of comments; let i=index" [comment] = comment [index] = i></app-comment-item>
+    </div>
+</div>

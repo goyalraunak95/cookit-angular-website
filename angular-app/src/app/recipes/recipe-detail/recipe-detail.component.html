@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="bookmark" style="cursor: pointer;" (click) = "onbook()" 
+        [ngStyle] = "{background: bookmarked ? 'red' : 'black'}"></div>
+        <img [src] = "recipeDetail.imagePath" [alt] = "recipeDetail.name" class="img-responsive"
+         style="max-height: 300px;">
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <h1>{{recipeDetail.name}}</h1>
+    </div>
+    <div class="col-xs-12 text-muted">
+        <h4>Posted By:- {{recipeDetail.author}}</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2 col-xs-12" *ngIf = "loggedInUser === recipeDetail.author">
+        <div class="btn-group" appDropdown>
+            <button 
+            class="btn btn-primary dropdown-toggle" 
+            type="button">
+        Manage Recipe<span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            <li><a style="cursor: pointer;" (click) = editRecipe() >Edit Recipe</a></li>
+            <li><a style="cursor: pointer;" (click) = deleteRecipe()>Delete Recipe</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class="col-md-2 col-xs-12">
+        <button class="btn btn-primary" (click) = addIngredToShopping() style="cursor: pointer;">Add to Shopping List</button>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-xs-12">
+        <h4>Recipe:</h4>
+    </div>
+    <div class="col-xs-12">
+        {{recipeDetail.recipeDetail}}
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-xs-12">
+        <span class="recipedetail">Ingrediants Used:</span>
+        <ul class="list-group">
+            <li class="list-group-item" 
+            *ngFor = "let ingrediant of recipeDetail.ingrediants">{{ingrediant.name}} - {{ingrediant.amount}}</li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <app-comment-list></app-comment-list>
+    </div>
+</div>
