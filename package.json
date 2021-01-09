@@ -8,7 +8,7 @@
     "dev": "nodemon src/index.js",
     "build": "npm run build:ssr",
     "serve:ssr": "node src/index.js",
-    "build:ssr": "angular-app/ng build --prod"
+    "build:ssr": "angular-app/npm run build --prod"
   },
   "author": "",
   "license": "ISC",
