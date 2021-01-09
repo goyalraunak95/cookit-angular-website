@@ -4,11 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run serve:ssr",
-    "dev": "nodemon src/index.js",
-    "build": "npm run build:ssr",
-    "serve:ssr": "node src/index.js",
-    "build:ssr": "angular-app/npm run build --prod"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
   },
   "author": "",
   "license": "ISC",
