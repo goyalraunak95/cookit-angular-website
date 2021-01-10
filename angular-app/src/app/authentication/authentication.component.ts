@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
 import { AuthenticationService } from './authentication.service'
 
 @Component({
@@ -14,7 +15,8 @@ export class AuthenticationComponent implements OnInit {
   isLoading = false;
   error: string = null;
   constructor(private authenticationService: AuthenticationService, 
-    private router: Router) { }
+    private router: Router, 
+    private shoppingListService: ShoppingListService) { }
 
   ngOnInit(): void {
   }
@@ -26,6 +28,7 @@ export class AuthenticationComponent implements OnInit {
   onSubmit(authenticationForm: NgForm) {
     this.isLoading = true;
     this.error = null;
+    this.shoppingListService.ingrediants = []
     
     if(this.isLoginMode)
     {
