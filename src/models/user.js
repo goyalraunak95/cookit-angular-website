@@ -62,7 +62,7 @@ userSchema.methods.generateAuthToken = async function () {
 userSchema.statics.findByCredentials = async (name, password) => {
     const user = await User.findOne({ name })
     if(!user)
-        throw new Error('You are not signed in')
+        throw new Error('You are not signed up')
     
     const isMatch = await bcrypt.compare(password, user.password)
     if(!isMatch)
