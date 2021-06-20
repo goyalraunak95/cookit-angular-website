@@ -16,7 +16,7 @@
                     type="text" 
                     class="form-control" 
                     name="name" 
-                    ngModel 
+                    [ngModel]="isLoginMode?'User_1':''" 
                     required 
                     placeholder="Username">
                 </label>
@@ -40,7 +40,7 @@
                     type="password" 
                     class="form-control" 
                     name="password"
-                    ngModel 
+                    [ngModel]="isLoginMode?'123456':''" 
                     required 
                     minlength="6" 
                     placeholder="Minimum 6 digits">
