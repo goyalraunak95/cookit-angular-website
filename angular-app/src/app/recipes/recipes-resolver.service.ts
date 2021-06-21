@@ -18,7 +18,7 @@ export class RecipesResolverService implements Resolve<Recipe[]>{
             return this.dataStoreService.fetchRecipes();
         else    
         {
-            console.log("Already Fetched");
+            //console.log("Already Fetched");
             return recipes;
         }    
     }
