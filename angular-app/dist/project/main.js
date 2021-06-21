@@ -1775,7 +1775,7 @@ class RecipesResolverService {
         if (recipes.length == 0)
             return this.dataStoreService.fetchRecipes();
         else {
-            console.log("Already Fetched");
+            //console.log("Already Fetched");
             return recipes;
         }
     }
