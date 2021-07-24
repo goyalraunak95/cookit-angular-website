@@ -86,7 +86,7 @@ router.post('/payment', auth ,async (req,res) => {
         ORDER_ID: String(_id),
         CUST_ID: String(req.user._id),
         TXN_AMOUNT: String(req.body.amount),
-        CALLBACK_URL: 'https://cookit-app-raunak.herokuapp.com/user/paymentcallback',
+        CALLBACK_URL: `${process.env.ROOT_URL}user/paymentcallback`,
         EMAIL: String(req.user.email),
         MOBILE_NO: process.env.MOBILE_NO
     }
