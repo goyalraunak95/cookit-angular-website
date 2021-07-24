@@ -93,7 +93,6 @@ router.post('/payment', auth ,async (req,res) => {
 
     try{
         const checksum = await paytm.generateSignature(params,process.env.PAYTM_MERCHANT_KEY)
-        //console.log(checksum)
         const paytmParams = {...params, CHECKSUMHASH: checksum}
         await order.save()
         res.send(paytmParams)
