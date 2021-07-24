@@ -107,7 +107,6 @@ router.post('/payment', auth ,async (req,res) => {
 router.post('/paymentcallback', async (req,res) => {
     const form = new formidable.IncomingForm()
     form.parse(req,async (err,fields,files) => {
-        //console.log(fields)
 
         paytmChecksum = fields.CHECKSUMHASH;
         delete fields.CHECKSUMHASH;
@@ -131,10 +130,8 @@ router.post('/paymentcallback', async (req,res) => {
                     order['BANKTXNID'] = fields.BANKTXNID
                     order['BANKNAME'] = fields.BANKNAME
                     await order.save()
-                    //console.log(order)
                     //await order.populate('USERID').execPopulate()
                     //console.log(order)
-                    //const token = jwt.sign({_id: order._id.to_String()},process.env.SECRET_KEY)
                     res.redirect(`/paymentinfo?id=${order._id.toString()}`)
                 }
                 else
