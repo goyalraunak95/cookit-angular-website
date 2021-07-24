@@ -8,8 +8,8 @@ import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.com
 import { RecipesResolverService } from './recipes/recipes-resolver.service'
 import { ShoppingListComponent } from './shopping-list/shopping-list.component'
 import { AuthenticationGuard } from './authentication/authentication.guard'
-import { PurchasedIngredListComponent } from './purchased-ingred-list/purchased-ingred-list.component'
 import { AuthenticationComponent } from './authentication/authentication.component'
+import { PaymentinfoComponent } from './paymentinfo/paymentinfo.component'
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/recipes', pathMatch: 'full' },
@@ -35,7 +35,8 @@ const appRoutes: Routes = [
     },
     { path: 'shopping-list', component: ShoppingListComponent, canActivate: [AuthenticationGuard] },
     { path: 'authentication', component: AuthenticationComponent},
-    { path: 'purchased', component: PurchasedIngredListComponent, canActivate: [AuthenticationGuard] }
+    { path: 'paymentinfo', component: PaymentinfoComponent, canActivate: [AuthenticationGuard] },
+    { path: '**', redirectTo: '/recipes' }
 ]
 
 @NgModule({

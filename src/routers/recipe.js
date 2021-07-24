@@ -67,6 +67,10 @@ router.delete('/:id', auth , async (req,res) => {
             return res.status(404).send()
         await recipe.remove()
         console.log("Recipe Deleted")
+        req.user.publishedRecipes = req.user.publishedRecipes.filter((recipe) => {
+                        return recipe.pubRecipeid != req.body.pubRecipeid
+                    })
+        await req.user.save()
         res.send(recipe)    
     }
     catch(e){
@@ -91,17 +95,17 @@ router.post('/comment/:id', auth , async (req,res) => {
     }
 })
 
-router.get('/comment/:id', auth , async (req,res) => {
-    const _id = req.params.id
-    try{
-        const recipe = await Recipe.findOne({_id})
-        if(!recipe)
-            return res.status(401).send()
-        res.status(201).send(recipe.comments)    
-    }
-    catch(e){
-        res.status(500).send()
-    }
-})
+// router.get('/comment/:id', auth , async (req,res) => {
+//     const _id = req.params.id
+//     try{
+//         const recipe = await Recipe.findOne({_id})
+//         if(!recipe)
+//             return res.status(401).send()
+//         res.status(201).send(recipe.comments)    
+//     }
+//     catch(e){
+//         res.status(500).send()
+//     }
+// })
 
 module.exports = router

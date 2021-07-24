@@ -1,0 +1,24 @@
+<div>
+    <div *ngIf = "STATUS == 'TXN_FAILURE'">
+        <h3>
+            Status: {{STATUS}}
+        </h3>
+        <hr>
+        <h3>
+            Message: {{RESPMSG}}
+        </h3>
+        <button class="btn btn-primary" (click) = "goHome()">Go to Home Page</button>
+    </div>
+    
+    <div *ngIf = "STATUS == 'TXN_SUCCESS'">
+        <h3 class="ordered">Ordered</h3>
+        <div class="success">
+            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+            </svg>
+        </div>
+        <button class="btn btn-primary" (click) = "goHome()" style="margin-left: 45%; margin-top: 80px;">Go to Home Page</button>
+    <div>
+        
+</div>

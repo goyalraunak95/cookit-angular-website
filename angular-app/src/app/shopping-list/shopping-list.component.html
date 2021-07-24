@@ -9,7 +9,7 @@
         </a>
         <div *ngIf = "ingrediants.length!=0">
         <hr>
-        <button class="btn btn-primary" (click) = "onBuy()">Buy Now</button>
+        <button (click)="onPayment()" class="btn btn-primary">Pay using Paytm</button>
         </div>
     </div> 
 </div>

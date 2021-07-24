@@ -21,10 +21,10 @@ import { AlertComponent } from './shared/alert.component'
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component' 
 import { CommentListComponent } from './recipes/recipe-detail/comment-list/comment-list.component';
 import { CommentItemComponent } from './recipes/recipe-detail/comment-list/comment-item/comment-item.component';
-import { PurchasedIngredListComponent } from './purchased-ingred-list/purchased-ingred-list.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { AuthenticationInterceptor } from './authentication/authentication.interceptor';
 import { FilterBookmarkPipe } from './shared/filter-bookmark.pipe';
+import { PaymentinfoComponent } from './paymentinfo/paymentinfo.component';
 
 @NgModule({
   declarations: [
@@ -43,9 +43,9 @@ import { FilterBookmarkPipe } from './shared/filter-bookmark.pipe';
     LoadingSpinnerComponent,
     CommentListComponent,
     CommentItemComponent,
-    PurchasedIngredListComponent,
     AuthenticationComponent,
-    FilterBookmarkPipe
+    FilterBookmarkPipe,
+    PaymentinfoComponent
   ],
   imports: [
     BrowserModule,

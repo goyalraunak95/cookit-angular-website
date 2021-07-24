@@ -42,8 +42,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _recipes_recipes_resolver_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./recipes/recipes-resolver.service */ "./src/app/recipes/recipes-resolver.service.ts");
 /* harmony import */ var _shopping_list_shopping_list_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./shopping-list/shopping-list.component */ "./src/app/shopping-list/shopping-list.component.ts");
 /* harmony import */ var _authentication_authentication_guard__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./authentication/authentication.guard */ "./src/app/authentication/authentication.guard.ts");
-/* harmony import */ var _purchased_ingred_list_purchased_ingred_list_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./purchased-ingred-list/purchased-ingred-list.component */ "./src/app/purchased-ingred-list/purchased-ingred-list.component.ts");
-/* harmony import */ var _authentication_authentication_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./authentication/authentication.component */ "./src/app/authentication/authentication.component.ts");
+/* harmony import */ var _authentication_authentication_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./authentication/authentication.component */ "./src/app/authentication/authentication.component.ts");
+/* harmony import */ var _paymentinfo_paymentinfo_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./paymentinfo/paymentinfo.component */ "./src/app/paymentinfo/paymentinfo.component.ts");
 
 
 
@@ -80,8 +80,9 @@ const appRoutes = [
         resolve: [_recipes_recipes_resolver_service__WEBPACK_IMPORTED_MODULE_6__["RecipesResolverService"]]
     },
     { path: 'shopping-list', component: _shopping_list_shopping_list_component__WEBPACK_IMPORTED_MODULE_7__["ShoppingListComponent"], canActivate: [_authentication_authentication_guard__WEBPACK_IMPORTED_MODULE_8__["AuthenticationGuard"]] },
-    { path: 'authentication', component: _authentication_authentication_component__WEBPACK_IMPORTED_MODULE_10__["AuthenticationComponent"] },
-    { path: 'purchased', component: _purchased_ingred_list_purchased_ingred_list_component__WEBPACK_IMPORTED_MODULE_9__["PurchasedIngredListComponent"], canActivate: [_authentication_authentication_guard__WEBPACK_IMPORTED_MODULE_8__["AuthenticationGuard"]] }
+    { path: 'authentication', component: _authentication_authentication_component__WEBPACK_IMPORTED_MODULE_9__["AuthenticationComponent"] },
+    { path: 'paymentinfo', component: _paymentinfo_paymentinfo_component__WEBPACK_IMPORTED_MODULE_10__["PaymentinfoComponent"], canActivate: [_authentication_authentication_guard__WEBPACK_IMPORTED_MODULE_8__["AuthenticationGuard"]] },
+    { path: '**', redirectTo: '/recipes' }
 ];
 class AppRoutingModule {
 }
@@ -181,10 +182,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_loading_spinner_loading_spinner_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./shared/loading-spinner/loading-spinner.component */ "./src/app/shared/loading-spinner/loading-spinner.component.ts");
 /* harmony import */ var _recipes_recipe_detail_comment_list_comment_list_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./recipes/recipe-detail/comment-list/comment-list.component */ "./src/app/recipes/recipe-detail/comment-list/comment-list.component.ts");
 /* harmony import */ var _recipes_recipe_detail_comment_list_comment_item_comment_item_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./recipes/recipe-detail/comment-list/comment-item/comment-item.component */ "./src/app/recipes/recipe-detail/comment-list/comment-item/comment-item.component.ts");
-/* harmony import */ var _purchased_ingred_list_purchased_ingred_list_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./purchased-ingred-list/purchased-ingred-list.component */ "./src/app/purchased-ingred-list/purchased-ingred-list.component.ts");
-/* harmony import */ var _authentication_authentication_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./authentication/authentication.component */ "./src/app/authentication/authentication.component.ts");
-/* harmony import */ var _authentication_authentication_interceptor__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./authentication/authentication.interceptor */ "./src/app/authentication/authentication.interceptor.ts");
-/* harmony import */ var _shared_filter_bookmark_pipe__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./shared/filter-bookmark.pipe */ "./src/app/shared/filter-bookmark.pipe.ts");
+/* harmony import */ var _authentication_authentication_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./authentication/authentication.component */ "./src/app/authentication/authentication.component.ts");
+/* harmony import */ var _authentication_authentication_interceptor__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./authentication/authentication.interceptor */ "./src/app/authentication/authentication.interceptor.ts");
+/* harmony import */ var _shared_filter_bookmark_pipe__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./shared/filter-bookmark.pipe */ "./src/app/shared/filter-bookmark.pipe.ts");
+/* harmony import */ var _paymentinfo_paymentinfo_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./paymentinfo/paymentinfo.component */ "./src/app/paymentinfo/paymentinfo.component.ts");
 
 
 
@@ -217,7 +218,7 @@ class AppModule {
 AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]] });
 AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function AppModule_Factory(t) { return new (t || AppModule)(); }, providers: [_recipes_recipe_service__WEBPACK_IMPORTED_MODULE_6__["RecipeService"], _shopping_list_shopping_list_service__WEBPACK_IMPORTED_MODULE_7__["ShoppingListService"],
         { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HTTP_INTERCEPTORS"],
-            useClass: _authentication_authentication_interceptor__WEBPACK_IMPORTED_MODULE_24__["AuthenticationInterceptor"],
+            useClass: _authentication_authentication_interceptor__WEBPACK_IMPORTED_MODULE_23__["AuthenticationInterceptor"],
             multi: true }], imports: [[
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
@@ -240,9 +241,9 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
         _shared_loading_spinner_loading_spinner_component__WEBPACK_IMPORTED_MODULE_19__["LoadingSpinnerComponent"],
         _recipes_recipe_detail_comment_list_comment_list_component__WEBPACK_IMPORTED_MODULE_20__["CommentListComponent"],
         _recipes_recipe_detail_comment_list_comment_item_comment_item_component__WEBPACK_IMPORTED_MODULE_21__["CommentItemComponent"],
-        _purchased_ingred_list_purchased_ingred_list_component__WEBPACK_IMPORTED_MODULE_22__["PurchasedIngredListComponent"],
-        _authentication_authentication_component__WEBPACK_IMPORTED_MODULE_23__["AuthenticationComponent"],
-        _shared_filter_bookmark_pipe__WEBPACK_IMPORTED_MODULE_25__["FilterBookmarkPipe"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
+        _authentication_authentication_component__WEBPACK_IMPORTED_MODULE_22__["AuthenticationComponent"],
+        _shared_filter_bookmark_pipe__WEBPACK_IMPORTED_MODULE_24__["FilterBookmarkPipe"],
+        _paymentinfo_paymentinfo_component__WEBPACK_IMPORTED_MODULE_25__["PaymentinfoComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
         _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
         _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"],
         _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
@@ -266,9 +267,9 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
                     _shared_loading_spinner_loading_spinner_component__WEBPACK_IMPORTED_MODULE_19__["LoadingSpinnerComponent"],
                     _recipes_recipe_detail_comment_list_comment_list_component__WEBPACK_IMPORTED_MODULE_20__["CommentListComponent"],
                     _recipes_recipe_detail_comment_list_comment_item_comment_item_component__WEBPACK_IMPORTED_MODULE_21__["CommentItemComponent"],
-                    _purchased_ingred_list_purchased_ingred_list_component__WEBPACK_IMPORTED_MODULE_22__["PurchasedIngredListComponent"],
-                    _authentication_authentication_component__WEBPACK_IMPORTED_MODULE_23__["AuthenticationComponent"],
-                    _shared_filter_bookmark_pipe__WEBPACK_IMPORTED_MODULE_25__["FilterBookmarkPipe"]
+                    _authentication_authentication_component__WEBPACK_IMPORTED_MODULE_22__["AuthenticationComponent"],
+                    _shared_filter_bookmark_pipe__WEBPACK_IMPORTED_MODULE_24__["FilterBookmarkPipe"],
+                    _paymentinfo_paymentinfo_component__WEBPACK_IMPORTED_MODULE_25__["PaymentinfoComponent"]
                 ],
                 imports: [
                     _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -279,7 +280,7 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
                 ],
                 providers: [_recipes_recipe_service__WEBPACK_IMPORTED_MODULE_6__["RecipeService"], _shopping_list_shopping_list_service__WEBPACK_IMPORTED_MODULE_7__["ShoppingListService"],
                     { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HTTP_INTERCEPTORS"],
-                        useClass: _authentication_authentication_interceptor__WEBPACK_IMPORTED_MODULE_24__["AuthenticationInterceptor"],
+                        useClass: _authentication_authentication_interceptor__WEBPACK_IMPORTED_MODULE_23__["AuthenticationInterceptor"],
                         multi: true }],
                 bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
             }]
@@ -601,6 +602,8 @@ class AuthenticationService {
         })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(errorRes => {
             let errorMes = "An unknown error occured";
+            console.log('Error response');
+            console.log(errorRes);
             if (errorRes.error.errorMes)
                 errorMes = errorRes.error.errorMes;
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["throwError"])(errorMes);
@@ -788,68 +791,110 @@ HeaderComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCo
 
 /***/ }),
 
-/***/ "./src/app/purchased-ingred-list/purchased-ingred-list.component.ts":
-/*!**************************************************************************!*\
-  !*** ./src/app/purchased-ingred-list/purchased-ingred-list.component.ts ***!
-  \**************************************************************************/
-/*! exports provided: PurchasedIngredListComponent */
+/***/ "./src/app/paymentinfo/paymentinfo.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/paymentinfo/paymentinfo.component.ts ***!
+  \******************************************************/
+/*! exports provided: PaymentinfoComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PurchasedIngredListComponent", function() { return PurchasedIngredListComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PaymentinfoComponent", function() { return PaymentinfoComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _shopping_list_shopping_list_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shopping-list/shopping-list.service */ "./src/app/shopping-list/shopping-list.service.ts");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+/* harmony import */ var _shared_transaction_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/transaction.service */ "./src/app/shared/transaction.service.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
 
 
 
 
-function PurchasedIngredListComponent_div_6_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnamespaceSVG"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnamespaceHTML"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+
+function PaymentinfoComponent_div_1_Template(rf, ctx) { if (rf & 1) {
+    const _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h3");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "hr");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "h3");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "button", 1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function PaymentinfoComponent_div_1_Template_button_click_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r3); const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r2.goHome(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "Go to Home Page");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ingrediant_r1 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("\n", ingrediant_r1.name, " (", ingrediant_r1.amount, ")\n");
+    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" Status: ", ctx_r0.STATUS, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" Message: ", ctx_r0.RESPMSG, " ");
 } }
-class PurchasedIngredListComponent {
-    constructor(shoppingListService) {
-        this.shoppingListService = shoppingListService;
-        this.ingrediants = [];
+function PaymentinfoComponent_div_2_Template(rf, ctx) { if (rf & 1) {
+    const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h3", 2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Ordered");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnamespaceSVG"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "svg", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](5, "circle", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "path", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnamespaceHTML"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "button", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function PaymentinfoComponent_div_2_Template_button_click_7_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r5); const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r4.goHome(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "Go to Home Page");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+class PaymentinfoComponent {
+    constructor(activatedRoute, transactionService, router) {
+        this.activatedRoute = activatedRoute;
+        this.transactionService = transactionService;
+        this.router = router;
     }
     ngOnInit() {
-        this.ingrediants = this.shoppingListService.getIngrediants();
+        this.activatedRoute.queryParams.subscribe((Params) => {
+            const _id = Params['id'];
+            this.transactionService.checkTransactionStatus(_id).subscribe((response) => {
+                this.STATUS = response.STATUS;
+                this.RESPMSG = response.RESPMSG;
+            }, (errorRes) => {
+                this.STATUS = 'TXN_FAILURE';
+                this.RESPMSG = errorRes;
+            });
+        });
+    }
+    goHome() {
+        this.router.navigate(['/recipes']);
     }
 }
-PurchasedIngredListComponent.ɵfac = function PurchasedIngredListComponent_Factory(t) { return new (t || PurchasedIngredListComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_shopping_list_shopping_list_service__WEBPACK_IMPORTED_MODULE_1__["ShoppingListService"])); };
-PurchasedIngredListComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: PurchasedIngredListComponent, selectors: [["app-purchased-ingred-list"]], decls: 7, vars: 1, consts: [[1, "ordered"], [1, "success"], ["xmlns", "http://www.w3.org/2000/svg", "viewBox", "0 0 52 52", 1, "checkmark"], ["cx", "26", "cy", "26", "r", "25", "fill", "none", 1, "checkmark__circle"], ["fill", "none", "d", "M14.1 27.2l7.1 7.2 16.7-16.8", 1, "checkmark__check"], ["class", "list-group-item clearfix", 4, "ngFor", "ngForOf"], [1, "list-group-item", "clearfix"]], template: function PurchasedIngredListComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "h3", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Ordered");
+PaymentinfoComponent.ɵfac = function PaymentinfoComponent_Factory(t) { return new (t || PaymentinfoComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_shared_transaction_service__WEBPACK_IMPORTED_MODULE_2__["TransactionService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"])); };
+PaymentinfoComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: PaymentinfoComponent, selectors: [["app-paymentinfo"]], decls: 3, vars: 2, consts: [[4, "ngIf"], [1, "btn", "btn-primary", 3, "click"], [1, "ordered"], [1, "success"], ["xmlns", "http://www.w3.org/2000/svg", "viewBox", "0 0 52 52", 1, "checkmark"], ["cx", "26", "cy", "26", "r", "25", "fill", "none", 1, "checkmark__circle"], ["fill", "none", "d", "M14.1 27.2l7.1 7.2 16.7-16.8", 1, "checkmark__check"], [1, "btn", "btn-primary", 2, "margin-left", "45%", "margin-top", "80px", 3, "click"]], template: function PaymentinfoComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, PaymentinfoComponent_div_1_Template, 8, 2, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, PaymentinfoComponent_div_2_Template, 10, 0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnamespaceSVG"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "svg", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "circle", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](5, "path", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](6, PurchasedIngredListComponent_div_6_Template, 2, 2, "div", 5);
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.ingrediants);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"]], styles: [".checkmark__circle[_ngcontent-%COMP%] {\r\n    stroke-dasharray: 200; \r\n    stroke-dashoffset: 200; \r\n    stroke-width: 2;\r\n    stroke-miterlimit: 10;\r\n    stroke: #7ac142;\r\n    fill: none;\r\n    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;\r\n  }\r\n  \r\n  .checkmark[_ngcontent-%COMP%] {\r\n    width: 100px; \r\n    height: 100px; \r\n    border-radius: 50%;\r\n    display: block;\r\n    stroke-width: 2;\r\n    stroke: #fff;\r\n    stroke-miterlimit: 10;\r\n    margin: 10% auto;\r\n    box-shadow: inset 0px 0px 0px #7ac142;\r\n    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;\r\n  }\r\n  \r\n  .checkmark__check[_ngcontent-%COMP%] {\r\n    transform-origin: 50% 50%;\r\n    stroke-dasharray: 98; \r\n    stroke-dashoffset: 98; \r\n    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;\r\n  }\r\n  \r\n  @keyframes stroke {\r\n    100% {\r\n      stroke-dashoffset: 0;\r\n    }\r\n  }\r\n  \r\n  @keyframes scale {\r\n    0%, 100% {\r\n      transform: none;\r\n    }\r\n    50% {\r\n      transform: scale3d(1.1, 1.1, 1);\r\n    }\r\n  }\r\n  \r\n  @keyframes fill {\r\n    100% {\r\n      box-shadow: inset 0px 0px 0px 80px #7ac142;\r\n    }\r\n  }\r\n  \r\n  .success[_ngcontent-%COMP%]{\r\n      height: 70px;\r\n      position: relative;\r\n      top: -100px;\r\n  }\r\n  \r\n  .ordered[_ngcontent-%COMP%]{\r\n      text-align: center;\r\n      font-size: 30px;\r\n  }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcHVyY2hhc2VkLWluZ3JlZC1saXN0L3B1cmNoYXNlZC1pbmdyZWQtbGlzdC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0kscUJBQXFCO0lBQ3JCLHNCQUFzQjtJQUN0QixlQUFlO0lBQ2YscUJBQXFCO0lBQ3JCLGVBQWU7SUFDZixVQUFVO0lBQ1YsOERBQThEO0VBQ2hFOztFQUVBO0lBQ0UsWUFBWTtJQUNaLGFBQWE7SUFDYixrQkFBa0I7SUFDbEIsY0FBYztJQUNkLGVBQWU7SUFDZixZQUFZO0lBQ1oscUJBQXFCO0lBQ3JCLGdCQUFnQjtJQUNoQixxQ0FBcUM7SUFDckMsNEVBQTRFO0VBQzlFOztFQUVBO0lBQ0UseUJBQXlCO0lBQ3pCLG9CQUFvQjtJQUNwQixxQkFBcUI7SUFDckIsbUVBQW1FO0VBQ3JFOztFQUVBO0lBQ0U7TUFDRSxvQkFBb0I7SUFDdEI7RUFDRjs7RUFDQTtJQUNFO01BQ0UsZUFBZTtJQUNqQjtJQUNBO01BQ0UsK0JBQStCO0lBQ2pDO0VBQ0Y7O0VBQ0E7SUFDRTtNQUNFLDBDQUEwQztJQUM1QztFQUNGOztFQUNBO01BQ0ksWUFBWTtNQUNaLGtCQUFrQjtNQUNsQixXQUFXO0VBQ2Y7O0VBQ0E7TUFDSSxrQkFBa0I7TUFDbEIsZUFBZTtFQUNuQiIsImZpbGUiOiJzcmMvYXBwL3B1cmNoYXNlZC1pbmdyZWQtbGlzdC9wdXJjaGFzZWQtaW5ncmVkLWxpc3QuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jaGVja21hcmtfX2NpcmNsZSB7XHJcbiAgICBzdHJva2UtZGFzaGFycmF5OiAyMDA7IFxyXG4gICAgc3Ryb2tlLWRhc2hvZmZzZXQ6IDIwMDsgXHJcbiAgICBzdHJva2Utd2lkdGg6IDI7XHJcbiAgICBzdHJva2UtbWl0ZXJsaW1pdDogMTA7XHJcbiAgICBzdHJva2U6ICM3YWMxNDI7XHJcbiAgICBmaWxsOiBub25lO1xyXG4gICAgYW5pbWF0aW9uOiBzdHJva2UgMC42cyBjdWJpYy1iZXppZXIoMC42NSwgMCwgMC40NSwgMSkgZm9yd2FyZHM7XHJcbiAgfVxyXG4gIFxyXG4gIC5jaGVja21hcmsge1xyXG4gICAgd2lkdGg6IDEwMHB4OyBcclxuICAgIGhlaWdodDogMTAwcHg7IFxyXG4gICAgYm9yZGVyLXJhZGl1czogNTAlO1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbiAgICBzdHJva2Utd2lkdGg6IDI7XHJcbiAgICBzdHJva2U6ICNmZmY7XHJcbiAgICBzdHJva2UtbWl0ZXJsaW1pdDogMTA7XHJcbiAgICBtYXJnaW46IDEwJSBhdXRvO1xyXG4gICAgYm94LXNoYWRvdzogaW5zZXQgMHB4IDBweCAwcHggIzdhYzE0MjtcclxuICAgIGFuaW1hdGlvbjogZmlsbCAuNHMgZWFzZS1pbi1vdXQgLjRzIGZvcndhcmRzLCBzY2FsZSAuM3MgZWFzZS1pbi1vdXQgLjlzIGJvdGg7XHJcbiAgfVxyXG4gIFxyXG4gIC5jaGVja21hcmtfX2NoZWNrIHtcclxuICAgIHRyYW5zZm9ybS1vcmlnaW46IDUwJSA1MCU7XHJcbiAgICBzdHJva2UtZGFzaGFycmF5OiA5ODsgXHJcbiAgICBzdHJva2UtZGFzaG9mZnNldDogOTg7IFxyXG4gICAgYW5pbWF0aW9uOiBzdHJva2UgMC4zcyBjdWJpYy1iZXppZXIoMC42NSwgMCwgMC40NSwgMSkgMC44cyBmb3J3YXJkcztcclxuICB9XHJcbiAgXHJcbiAgQGtleWZyYW1lcyBzdHJva2Uge1xyXG4gICAgMTAwJSB7XHJcbiAgICAgIHN0cm9rZS1kYXNob2Zmc2V0OiAwO1xyXG4gICAgfVxyXG4gIH1cclxuICBAa2V5ZnJhbWVzIHNjYWxlIHtcclxuICAgIDAlLCAxMDAlIHtcclxuICAgICAgdHJhbnNmb3JtOiBub25lO1xyXG4gICAgfVxyXG4gICAgNTAlIHtcclxuICAgICAgdHJhbnNmb3JtOiBzY2FsZTNkKDEuMSwgMS4xLCAxKTtcclxuICAgIH1cclxuICB9XHJcbiAgQGtleWZyYW1lcyBmaWxsIHtcclxuICAgIDEwMCUge1xyXG4gICAgICBib3gtc2hhZG93OiBpbnNldCAwcHggMHB4IDBweCA4MHB4ICM3YWMxNDI7XHJcbiAgICB9XHJcbiAgfVxyXG4gIC5zdWNjZXNze1xyXG4gICAgICBoZWlnaHQ6IDcwcHg7XHJcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgICAgdG9wOiAtMTAwcHg7XHJcbiAgfVxyXG4gIC5vcmRlcmVke1xyXG4gICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICAgIGZvbnQtc2l6ZTogMzBweDtcclxuICB9Il19 */"] });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](PurchasedIngredListComponent, [{
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.STATUS == "TXN_FAILURE");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.STATUS == "TXN_SUCCESS");
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgIf"]], styles: [".checkmark__circle[_ngcontent-%COMP%] {\r\n    stroke-dasharray: 200; \r\n    stroke-dashoffset: 200; \r\n    stroke-width: 2;\r\n    stroke-miterlimit: 10;\r\n    stroke: #7ac142;\r\n    fill: none;\r\n    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;\r\n  }\r\n  \r\n  .checkmark[_ngcontent-%COMP%] {\r\n    width: 200px; \r\n    height: 200px; \r\n    border-radius: 50%;\r\n    display: block;\r\n    stroke-width: 2;\r\n    stroke: #fff;\r\n    stroke-miterlimit: 10;\r\n    margin: 10% auto;\r\n    box-shadow: inset 0px 0px 0px #7ac142;\r\n    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;\r\n  }\r\n  \r\n  .checkmark__check[_ngcontent-%COMP%] {\r\n    transform-origin: 50% 50%;\r\n    stroke-dasharray: 98; \r\n    stroke-dashoffset: 98; \r\n    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;\r\n  }\r\n  \r\n  @keyframes stroke {\r\n    100% {\r\n      stroke-dashoffset: 0;\r\n    }\r\n  }\r\n  \r\n  @keyframes scale {\r\n    0%, 100% {\r\n      transform: none;\r\n    }\r\n    50% {\r\n      transform: scale3d(1.1, 1.1, 1);\r\n    }\r\n  }\r\n  \r\n  @keyframes fill {\r\n    100% {\r\n      box-shadow: inset 0px 0px 0px 100px #7ac142;\r\n    }\r\n  }\r\n  \r\n  .success[_ngcontent-%COMP%]{\r\n      height: 70px;\r\n      position: relative;\r\n      top: -100px;\r\n  }\r\n  \r\n  .ordered[_ngcontent-%COMP%]{\r\n      text-align: center;\r\n      font-size: 30px;\r\n  }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGF5bWVudGluZm8vcGF5bWVudGluZm8uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHFCQUFxQjtJQUNyQixzQkFBc0I7SUFDdEIsZUFBZTtJQUNmLHFCQUFxQjtJQUNyQixlQUFlO0lBQ2YsVUFBVTtJQUNWLDhEQUE4RDtFQUNoRTs7RUFFQTtJQUNFLFlBQVk7SUFDWixhQUFhO0lBQ2Isa0JBQWtCO0lBQ2xCLGNBQWM7SUFDZCxlQUFlO0lBQ2YsWUFBWTtJQUNaLHFCQUFxQjtJQUNyQixnQkFBZ0I7SUFDaEIscUNBQXFDO0lBQ3JDLDRFQUE0RTtFQUM5RTs7RUFFQTtJQUNFLHlCQUF5QjtJQUN6QixvQkFBb0I7SUFDcEIscUJBQXFCO0lBQ3JCLG1FQUFtRTtFQUNyRTs7RUFFQTtJQUNFO01BQ0Usb0JBQW9CO0lBQ3RCO0VBQ0Y7O0VBQ0E7SUFDRTtNQUNFLGVBQWU7SUFDakI7SUFDQTtNQUNFLCtCQUErQjtJQUNqQztFQUNGOztFQUNBO0lBQ0U7TUFDRSwyQ0FBMkM7SUFDN0M7RUFDRjs7RUFDQTtNQUNJLFlBQVk7TUFDWixrQkFBa0I7TUFDbEIsV0FBVztFQUNmOztFQUNBO01BQ0ksa0JBQWtCO01BQ2xCLGVBQWU7RUFDbkIiLCJmaWxlIjoic3JjL2FwcC9wYXltZW50aW5mby9wYXltZW50aW5mby5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNoZWNrbWFya19fY2lyY2xlIHtcclxuICAgIHN0cm9rZS1kYXNoYXJyYXk6IDIwMDsgXHJcbiAgICBzdHJva2UtZGFzaG9mZnNldDogMjAwOyBcclxuICAgIHN0cm9rZS13aWR0aDogMjtcclxuICAgIHN0cm9rZS1taXRlcmxpbWl0OiAxMDtcclxuICAgIHN0cm9rZTogIzdhYzE0MjtcclxuICAgIGZpbGw6IG5vbmU7XHJcbiAgICBhbmltYXRpb246IHN0cm9rZSAwLjZzIGN1YmljLWJlemllcigwLjY1LCAwLCAwLjQ1LCAxKSBmb3J3YXJkcztcclxuICB9XHJcbiAgXHJcbiAgLmNoZWNrbWFyayB7XHJcbiAgICB3aWR0aDogMjAwcHg7IFxyXG4gICAgaGVpZ2h0OiAyMDBweDsgXHJcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgICBkaXNwbGF5OiBibG9jaztcclxuICAgIHN0cm9rZS13aWR0aDogMjtcclxuICAgIHN0cm9rZTogI2ZmZjtcclxuICAgIHN0cm9rZS1taXRlcmxpbWl0OiAxMDtcclxuICAgIG1hcmdpbjogMTAlIGF1dG87XHJcbiAgICBib3gtc2hhZG93OiBpbnNldCAwcHggMHB4IDBweCAjN2FjMTQyO1xyXG4gICAgYW5pbWF0aW9uOiBmaWxsIC40cyBlYXNlLWluLW91dCAuNHMgZm9yd2FyZHMsIHNjYWxlIC4zcyBlYXNlLWluLW91dCAuOXMgYm90aDtcclxuICB9XHJcbiAgXHJcbiAgLmNoZWNrbWFya19fY2hlY2sge1xyXG4gICAgdHJhbnNmb3JtLW9yaWdpbjogNTAlIDUwJTtcclxuICAgIHN0cm9rZS1kYXNoYXJyYXk6IDk4OyBcclxuICAgIHN0cm9rZS1kYXNob2Zmc2V0OiA5ODsgXHJcbiAgICBhbmltYXRpb246IHN0cm9rZSAwLjNzIGN1YmljLWJlemllcigwLjY1LCAwLCAwLjQ1LCAxKSAwLjhzIGZvcndhcmRzO1xyXG4gIH1cclxuICBcclxuICBAa2V5ZnJhbWVzIHN0cm9rZSB7XHJcbiAgICAxMDAlIHtcclxuICAgICAgc3Ryb2tlLWRhc2hvZmZzZXQ6IDA7XHJcbiAgICB9XHJcbiAgfVxyXG4gIEBrZXlmcmFtZXMgc2NhbGUge1xyXG4gICAgMCUsIDEwMCUge1xyXG4gICAgICB0cmFuc2Zvcm06IG5vbmU7XHJcbiAgICB9XHJcbiAgICA1MCUge1xyXG4gICAgICB0cmFuc2Zvcm06IHNjYWxlM2QoMS4xLCAxLjEsIDEpO1xyXG4gICAgfVxyXG4gIH1cclxuICBAa2V5ZnJhbWVzIGZpbGwge1xyXG4gICAgMTAwJSB7XHJcbiAgICAgIGJveC1zaGFkb3c6IGluc2V0IDBweCAwcHggMHB4IDEwMHB4ICM3YWMxNDI7XHJcbiAgICB9XHJcbiAgfVxyXG4gIC5zdWNjZXNze1xyXG4gICAgICBoZWlnaHQ6IDcwcHg7XHJcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgICAgdG9wOiAtMTAwcHg7XHJcbiAgfVxyXG4gIC5vcmRlcmVke1xyXG4gICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICAgIGZvbnQtc2l6ZTogMzBweDtcclxuICB9Il19 */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](PaymentinfoComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
-                selector: 'app-purchased-ingred-list',
-                templateUrl: './purchased-ingred-list.component.html',
-                styleUrls: ['./purchased-ingred-list.component.css']
+                selector: 'app-paymentinfo',
+                templateUrl: './paymentinfo.component.html',
+                styleUrls: ['./paymentinfo.component.css']
             }]
-    }], function () { return [{ type: _shopping_list_shopping_list_service__WEBPACK_IMPORTED_MODULE_1__["ShoppingListService"] }]; }, null); })();
+    }], function () { return [{ type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"] }, { type: _shared_transaction_service__WEBPACK_IMPORTED_MODULE_2__["TransactionService"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] }]; }, null); })();
 
 
 /***/ }),
@@ -2174,6 +2219,52 @@ LoadingSpinnerComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵ
 
 /***/ }),
 
+/***/ "./src/app/shared/transaction.service.ts":
+/*!***********************************************!*\
+  !*** ./src/app/shared/transaction.service.ts ***!
+  \***********************************************/
+/*! exports provided: TransactionService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TransactionService", function() { return TransactionService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
+
+
+
+
+
+class TransactionService {
+    constructor(http) {
+        this.http = http;
+        this.url = `/user/paymentStatus`;
+    }
+    checkTransactionStatus(_id) {
+        return this.http.get(this.url + '/' + _id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])((errorRes) => {
+            let errorMes = "An unknown error occured";
+            if (errorRes.status === 400) {
+                errorMes = errorRes.error.errorMes;
+            }
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["throwError"])(errorMes);
+        }));
+    }
+}
+TransactionService.ɵfac = function TransactionService_Factory(t) { return new (t || TransactionService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"])); };
+TransactionService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: TransactionService, factory: TransactionService.ɵfac, providedIn: 'root' });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](TransactionService, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        args: [{
+                providedIn: 'root'
+            }]
+    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] }]; }, null); })();
+
+
+/***/ }),
+
 /***/ "./src/app/shopping-list/shopping-edit/shopping-edit.component.ts":
 /*!************************************************************************!*\
   !*** ./src/app/shopping-list/shopping-edit/shopping-edit.component.ts ***!
@@ -2323,8 +2414,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _shopping_list_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./shopping-list.service */ "./src/app/shopping-list/shopping-list.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-/* harmony import */ var _shopping_edit_shopping_edit_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./shopping-edit/shopping-edit.component */ "./src/app/shopping-list/shopping-edit/shopping-edit.component.ts");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
+/* harmony import */ var _shopping_edit_shopping_edit_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./shopping-edit/shopping-edit.component */ "./src/app/shopping-list/shopping-edit/shopping-edit.component.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+
 
 
 
@@ -2347,15 +2440,16 @@ function ShoppingListComponent_div_5_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "hr");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "button", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ShoppingListComponent_div_5_Template_button_click_2_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r7); const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r6.onBuy(); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Buy Now");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ShoppingListComponent_div_5_Template_button_click_2_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r7); const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r6.onPayment(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Pay using Paytm");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 class ShoppingListComponent {
-    constructor(shoppingListService, router) {
+    constructor(shoppingListService, router, http) {
         this.shoppingListService = shoppingListService;
         this.router = router;
+        this.http = http;
         this.ingrediants = [];
     }
     ngOnInit() {
@@ -2370,11 +2464,31 @@ class ShoppingListComponent {
     onEditIngred(index) {
         this.shoppingListService.startedEditing.next(index);
     }
-    onBuy() {
-        this.router.navigate(['/purchased']);
+    onPayment() {
+        this.http.post('/user/payment', { amount: 500 }).subscribe((response) => {
+            this.createPaytmForm(response);
+        });
+    }
+    createPaytmForm(params) {
+        const my_form = document.createElement('form');
+        my_form.name = 'paytm_form';
+        my_form.method = 'post';
+        my_form.action = 'https://securegw-stage.paytm.in/order/process';
+        const myParams = Object.keys(params);
+        for (let i = 0; i < myParams.length; i++) {
+            const key = myParams[i];
+            let my_tb = document.createElement('input');
+            my_tb.type = 'hidden';
+            my_tb.name = key;
+            my_tb.value = params[key];
+            my_form.appendChild(my_tb);
+        }
+        ;
+        document.body.appendChild(my_form);
+        my_form.submit();
     }
 }
-ShoppingListComponent.ɵfac = function ShoppingListComponent_Factory(t) { return new (t || ShoppingListComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_shopping_list_service__WEBPACK_IMPORTED_MODULE_1__["ShoppingListService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"])); };
+ShoppingListComponent.ɵfac = function ShoppingListComponent_Factory(t) { return new (t || ShoppingListComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_shopping_list_service__WEBPACK_IMPORTED_MODULE_1__["ShoppingListService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"])); };
 ShoppingListComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ShoppingListComponent, selectors: [["app-shopping-list"]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([])], decls: 6, vars: 2, consts: [[1, "row"], [1, "col-xs-10"], ["class", "list-group-item clearfix", "style", "cursor: pointer;", 3, "click", 4, "ngFor", "ngForOf"], [4, "ngIf"], [1, "list-group-item", "clearfix", 2, "cursor", "pointer", 3, "click"], [1, "btn", "btn-primary", 3, "click"]], template: function ShoppingListComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
@@ -2389,7 +2503,7 @@ ShoppingListComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.ingrediants);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.ingrediants.length != 0);
-    } }, directives: [_shopping_edit_shopping_edit_component__WEBPACK_IMPORTED_MODULE_3__["ShoppingEditComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3Nob3BwaW5nLWxpc3Qvc2hvcHBpbmctbGlzdC5jb21wb25lbnQuY3NzIn0= */"] });
+    } }, directives: [_shopping_edit_shopping_edit_component__WEBPACK_IMPORTED_MODULE_4__["ShoppingEditComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3Nob3BwaW5nLWxpc3Qvc2hvcHBpbmctbGlzdC5jb21wb25lbnQuY3NzIn0= */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ShoppingListComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -2398,7 +2512,7 @@ ShoppingListComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
                 styleUrls: ['./shopping-list.component.css'],
                 providers: []
             }]
-    }], function () { return [{ type: _shopping_list_service__WEBPACK_IMPORTED_MODULE_1__["ShoppingListService"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }]; }, null); })();
+    }], function () { return [{ type: _shopping_list_service__WEBPACK_IMPORTED_MODULE_1__["ShoppingListService"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }, { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] }]; }, null); })();
 
 
 /***/ }),

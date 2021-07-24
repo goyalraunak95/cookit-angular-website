@@ -1,11 +1,13 @@
+require('dotenv').config()
 const express = require('express')
 require('./db/mongoose')
 const cors = require('cors')
 const recipeRouter = require('./routers/recipe')
 const userRouter = require('./routers/user')
 
+
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT
 
 app.use(express.static(process.cwd() + "/angular-app/dist/project"))
 

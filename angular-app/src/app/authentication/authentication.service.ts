@@ -52,6 +52,8 @@ export class AuthenticationService {
     .pipe( catchError(
       errorRes => {
         let errorMes = "An unknown error occured";
+        console.log('Error response')
+        console.log(errorRes)
         if(errorRes.error.errorMes)
           errorMes = errorRes.error.errorMes
         return throwError(errorMes)  
