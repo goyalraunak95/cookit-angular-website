@@ -1,5 +1,5 @@
 <div>
-    <div *ngIf = "STATUS == 'TXN_FAILURE'">
+    <div *ngIf = "STATUS && STATUS != 'TXN_SUCCESS'">
         <h3>
             Status: {{STATUS}}
         </h3>
