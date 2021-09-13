@@ -14,29 +14,29 @@ router.post('/signup', async (req,res) => {
 
     try{
         await newUser.save()
-        const user = await newUser.generateAuthToken()
-        res.status(201).send(user)
+        const usertoken = await User.generateAuthToken(newUser)
+        res.status(201).send({newUser,token:usertoken})
     }
     catch(e){
-        res.status(400).send(e)
+        res.status(500).send(e)
     }
 })
 
 router.post('/login', async (req,res) => {
     try{
-        user = await User.findByCredentials(req.body.name, req.body.password)
-        user = await user.generateAuthToken()
-        res.send(user)
+        let user = await User.findByCredentials(req.body.name, req.body.password)
+        const usertoken = await User.generateAuthToken(user)
+
+        res.send({user,token:usertoken})
     }
     catch(e){
-        //console.log(e.message)
-        res.status(400).send({errorMes: e.message})
+        console.log(e.message)
+        res.status(401).send({errorMes: e.message})
     }
 })
 
 router.post('/logout', auth , async (req,res) => {
     try{
-        await req.user.save()
         res.send()
     }
     catch(e) {
@@ -50,19 +50,19 @@ router.get('/', auth , (req,res) => {
 
 router.post('/bookmark', auth , async (req,res) => {
     try{
-        user = req.user
+        let user = req.user
         user.bookmarks = user.bookmarks.concat({recipeBookmarkedid: req.body.recipeBookmarkedid})
         user = await user.save()
         res.send(user.bookmarks)
     }
     catch(e) {
-        res.status(400).send()
+        res.status(500).send()
     }
 })
 
 router.delete('/bookmark/:id', auth , async (req,res) => {
     try{
-        user = req.user
+        let user = req.user
         const recipeId = req.params.id
         user.bookmarks = user.bookmarks.filter((bookmark) => {
             return bookmark.recipeBookmarkedid != recipeId
@@ -100,7 +100,7 @@ router.post('/payment', auth ,async (req,res) => {
     catch(e)
     {
         console.log(e)
-        res.status(400).send({errorMes: e.message})
+        res.status(500).send({errorMes: e.message})
     }
 })
 
@@ -175,6 +175,9 @@ router.post('/paymentcallback', async (req,res) => {
 
             //     var response = "";
             //     var post_req = https.request(options,(post_res) => {
+            //         post_res.on('error',(error) => {
+            //             console.log(error);
+            //     });
             //         post_res.on('data', (chunk) => {
             //             response += chunk;
             //         });
@@ -205,7 +208,7 @@ router.get('/paymentStatus/:id', auth, async (req,res) => {
                 RESPMSG: order.RESPMSG
             }
 
-            res.status(201).send(response)
+            res.status(200).send(response)
         }
         else
             throw new Error('Transaction not found')

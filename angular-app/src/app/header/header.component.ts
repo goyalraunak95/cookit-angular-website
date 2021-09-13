@@ -11,7 +11,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   isAuthenticated = false;
   subscription: Subscription;
-  userName: string = null
   constructor(private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
@@ -19,8 +18,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.subscription = this.authenticationService.isUserAuthenticated.subscribe(
       (isAuthenticate) => {
         this.isAuthenticated = isAuthenticate
-        if(isAuthenticate)
-          this.userName = this.authenticationService.user.name
       }
     )
   }

@@ -29,9 +29,6 @@ const userSchema = mongoose.Schema({
         required: true,
         trim: true
     },
-    token: {
-        type: String
-    },
     bookmarks: [{
         recipeBookmarkedid: {
             type: mongoose.Schema.Types.ObjectId,
@@ -52,12 +49,9 @@ userSchema.methods.toJSON = function () {
     return user
 }
 
-userSchema.methods.generateAuthToken = async function () {
-    user = this
+userSchema.statics.generateAuthToken = async (user) => {
     const token = jwt.sign({ _id: user._id.toString() }, process.env.SECRET_KEY)
-    user.token = token
-    user = await user.save()
-    return user
+    return token
 }
 
 userSchema.statics.findByCredentials = async (name, password) => {

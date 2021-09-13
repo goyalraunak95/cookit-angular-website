@@ -22,7 +22,7 @@ export class AuthenticationInterceptor implements HttpInterceptor {
         if(isAuthenticate)
         {
           const modifiedUrl = request.clone({
-            headers: request.headers.append('Authorization', this.authenticationService.user.token)
+            headers: request.headers.append('Authorization', this.authenticationService.token)
           })
           return next.handle(modifiedUrl)
         }

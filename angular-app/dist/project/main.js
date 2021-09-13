@@ -125,6 +125,8 @@ class AppComponent {
     }
     ngOnInit() {
         this.authenticationService.autoLogin();
+        if (this.authenticationService.token)
+            this.authenticationService.getUserinfo();
     }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_authentication_authentication_service__WEBPACK_IMPORTED_MODULE_1__["AuthenticationService"])); };
@@ -387,7 +389,7 @@ class AuthenticationComponent {
         this.authenticationService = authenticationService;
         this.router = router;
         this.shoppingListService = shoppingListService;
-        this.isLoginMode = false;
+        this.isLoginMode = true;
         this.isLoading = false;
         this.error = null;
     }
@@ -527,7 +529,7 @@ class AuthenticationInterceptor {
         return this.authenticationService.isUserAuthenticated.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["take"])(1), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["exhaustMap"])(isAuthenticate => {
             if (isAuthenticate) {
                 const modifiedUrl = request.clone({
-                    headers: request.headers.append('Authorization', this.authenticationService.user.token)
+                    headers: request.headers.append('Authorization', this.authenticationService.token)
                 });
                 return next.handle(modifiedUrl);
             }
@@ -570,6 +572,7 @@ class AuthenticationService {
         this.http = http;
         this.router = router;
         this.user = null;
+        this.token = null;
         this.isUserAuthenticated = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](false);
         this.url = `/user`;
     }
@@ -590,8 +593,9 @@ class AuthenticationService {
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["throwError"])(errorMes);
         }))
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])((responseData) => {
-            this.user = responseData;
-            localStorage.setItem('userData', JSON.stringify(this.user));
+            this.user = responseData.user;
+            this.token = responseData.token;
+            localStorage.setItem('userToken', JSON.stringify(this.token));
             this.isUserAuthenticated.next(true);
         }));
     }
@@ -609,19 +613,19 @@ class AuthenticationService {
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["throwError"])(errorMes);
         }))
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(resData => {
-            this.user = resData;
-            localStorage.setItem('userData', JSON.stringify(this.user));
+            this.user = resData.user;
+            this.token = resData.token;
+            localStorage.setItem('userToken', JSON.stringify(this.token));
             this.isUserAuthenticated.next(true);
         }));
     }
     autoLogin() {
-        const userData = JSON.parse(localStorage.getItem('userData'));
-        if (!userData) {
+        const userToken = JSON.parse(localStorage.getItem('userToken'));
+        if (!userToken) {
             return;
         }
-        this.user = userData;
+        this.token = userToken;
         this.isUserAuthenticated.next(true);
-        this.getUserinfo();
     }
     logout() {
         this.http.post(this.url + '/logout', {})
@@ -630,7 +634,7 @@ class AuthenticationService {
             this.isUserAuthenticated.next(false);
         }))
             .subscribe(() => {
-            localStorage.removeItem('userData');
+            localStorage.removeItem('userToken');
             this.router.navigate(['/authentication']);
         });
     }
@@ -674,8 +678,8 @@ __webpack_require__.r(__webpack_exports__);
 
 const _c0 = function () { return ["/recipes"]; };
 function HeaderComponent_li_7_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "li", 11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "li", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 11);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Recipes");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -686,8 +690,8 @@ function HeaderComponent_li_7_Template(rf, ctx) { if (rf & 1) {
 } }
 const _c1 = function () { return ["/shopping-list"]; };
 function HeaderComponent_li_8_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "li", 11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "li", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 11);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Shopping List");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -698,8 +702,8 @@ function HeaderComponent_li_8_Template(rf, ctx) { if (rf & 1) {
 } }
 const _c2 = function () { return ["/authentication"]; };
 function HeaderComponent_li_9_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "li", 13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "li", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 11);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Authenticate");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -708,19 +712,10 @@ function HeaderComponent_li_9_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](1, _c2));
 } }
 function HeaderComponent_li_11_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "li", 14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r3.userName, " ");
-} }
-function HeaderComponent_li_12_Template(rf, ctx) { if (rf & 1) {
-    const _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "li", 15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 16);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HeaderComponent_li_12_Template_a_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r6); const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r5.onLogout(); });
+    const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "li", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HeaderComponent_li_11_Template_a_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r5); const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r4.onLogout(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " LogOut ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -729,13 +724,10 @@ class HeaderComponent {
     constructor(authenticationService) {
         this.authenticationService = authenticationService;
         this.isAuthenticated = false;
-        this.userName = null;
     }
     ngOnInit() {
         this.subscription = this.authenticationService.isUserAuthenticated.subscribe((isAuthenticate) => {
             this.isAuthenticated = isAuthenticate;
-            if (isAuthenticate)
-                this.userName = this.authenticationService.user.name;
         });
     }
     onLogout() {
@@ -746,7 +738,7 @@ class HeaderComponent {
     }
 }
 HeaderComponent.ɵfac = function HeaderComponent_Factory(t) { return new (t || HeaderComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_authentication_authentication_service__WEBPACK_IMPORTED_MODULE_1__["AuthenticationService"])); };
-HeaderComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HeaderComponent, selectors: [["app-header"]], decls: 13, vars: 5, consts: [[1, "navbar", "navbar-default"], [1, "container-fluid"], [1, "navbar-header"], [1, "navbar-brand"], [1, "collapse", "navbar-collapse"], [1, "nav", "navbar-nav", "header-item"], [3, "routerLinkActive", 4, "ngIf"], ["routerLinkActive", "active", 4, "ngIf"], [1, "nav", "navbar-nav", "navbar-right"], ["class", "user text-muted", 4, "ngIf"], ["style", "cursor: pointer;", 4, "ngIf"], [3, "routerLinkActive"], [3, "routerLink"], ["routerLinkActive", "active"], [1, "user", "text-muted"], [2, "cursor", "pointer"], [3, "click"]], template: function HeaderComponent_Template(rf, ctx) { if (rf & 1) {
+HeaderComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HeaderComponent, selectors: [["app-header"]], decls: 12, vars: 4, consts: [[1, "navbar", "navbar-default"], [1, "container-fluid"], [1, "navbar-header"], [1, "navbar-brand"], [1, "collapse", "navbar-collapse"], [1, "nav", "navbar-nav", "header-item"], [3, "routerLinkActive", 4, "ngIf"], ["routerLinkActive", "active", 4, "ngIf"], [1, "nav", "navbar-nav", "navbar-right"], ["style", "cursor: pointer;", 4, "ngIf"], [3, "routerLinkActive"], [3, "routerLink"], ["routerLinkActive", "active"], [2, "cursor", "pointer"], [3, "click"]], template: function HeaderComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nav", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
@@ -760,8 +752,7 @@ HeaderComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCo
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](9, HeaderComponent_li_9_Template, 3, 2, "li", 7);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "ul", 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, HeaderComponent_li_11_Template, 2, 1, "li", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, HeaderComponent_li_12_Template, 3, 0, "li", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, HeaderComponent_li_11_Template, 3, 0, "li", 9);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -775,8 +766,6 @@ HeaderComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCo
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.isAuthenticated);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isAuthenticated);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isAuthenticated);
     } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterLinkActive"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterLinkWithHref"]], styles: [".navbar-right[_ngcontent-%COMP%]{\r\n    position: absolute;\r\n    top: 0px;\r\n    right: 0px;\r\n    margin-right: 30px;\r\n    \r\n}\r\n.header-item[_ngcontent-%COMP%]{\r\n    position: absolute;\r\n    top: 0;\r\n    left: 95px;\r\n}\r\n.user[_ngcontent-%COMP%]{\r\n    font-size: 15px;\r\n    padding: 14px;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaGVhZGVyL2hlYWRlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksa0JBQWtCO0lBQ2xCLFFBQVE7SUFDUixVQUFVO0lBQ1Ysa0JBQWtCOztBQUV0QjtBQUNBO0lBQ0ksa0JBQWtCO0lBQ2xCLE1BQU07SUFDTixVQUFVO0FBQ2Q7QUFDQTtJQUNJLGVBQWU7SUFDZixhQUFhO0FBQ2pCIiwiZmlsZSI6InNyYy9hcHAvaGVhZGVyL2hlYWRlci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5hdmJhci1yaWdodHtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRvcDogMHB4O1xyXG4gICAgcmlnaHQ6IDBweDtcclxuICAgIG1hcmdpbi1yaWdodDogMzBweDtcclxuICAgIFxyXG59XHJcbi5oZWFkZXItaXRlbXtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRvcDogMDtcclxuICAgIGxlZnQ6IDk1cHg7XHJcbn1cclxuLnVzZXJ7XHJcbiAgICBmb250LXNpemU6IDE1cHg7XHJcbiAgICBwYWRkaW5nOiAxNHB4O1xyXG59Il19 */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](HeaderComponent, [{
@@ -1399,6 +1388,8 @@ class RecipeEditComponent {
             'recipeDetail': new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](recipeDetail, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required),
             'ingrediants': recipeIngred
         });
+        if (!this.editMode)
+            this.onAddIngred();
     }
     get controls() {
         return (this.recipeForm.get('ingrediants').controls);

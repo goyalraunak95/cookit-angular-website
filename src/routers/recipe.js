@@ -1,6 +1,5 @@
 const express = require('express')
 const Recipe = require('../models/recipe')
-const User = require('../models/user')
 const auth = require('../middleware/auth')
 
 const router = new express.Router()
@@ -14,7 +13,7 @@ router.post('/', auth , async (req,res) => {
         newRecipe = await newRecipe.save()
         console.log("Recipe Posted")
 
-        user = await User.findOne({name: req.user.name})
+        let user = req.user
         user.publishedRecipes = user.publishedRecipes.concat({pubRecipeid: newRecipe._id})
         user = await user.save()
 
@@ -24,7 +23,7 @@ router.post('/', auth , async (req,res) => {
         })
     }
     catch(e){
-        res.status(400).send(e)
+        res.status(500).send(e)
     }
 })
 
@@ -55,7 +54,7 @@ router.patch('/:id', async (req,res) => {
         res.send(recipe)
     }
     catch(e){
-        res.status(400).send(e)
+        res.status(500).send(e)
     }
 })
 
@@ -81,7 +80,7 @@ router.delete('/:id', auth , async (req,res) => {
 router.post('/comment/:id', auth , async (req,res) => {
     const _id = req.params.id
     try{
-        recipe = await Recipe.findOne({_id})
+        let recipe = await Recipe.findOne({_id})
         if(!recipe)
             return res.status(404).send()
         delete req.body._id    
@@ -94,18 +93,5 @@ router.post('/comment/:id', auth , async (req,res) => {
         res.status(500).send(e)
     }
 })
-
-// router.get('/comment/:id', auth , async (req,res) => {
-//     const _id = req.params.id
-//     try{
-//         const recipe = await Recipe.findOne({_id})
-//         if(!recipe)
-//             return res.status(401).send()
-//         res.status(201).send(recipe.comments)    
-//     }
-//     catch(e){
-//         res.status(500).send()
-//     }
-// })
 
 module.exports = router

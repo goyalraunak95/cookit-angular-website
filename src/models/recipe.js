@@ -12,7 +12,8 @@ const recipeSchema = mongoose.Schema({
         trim: true
     },
     imagePath: {
-        type: String
+        type: String,
+        required: true
     },
     recipeDetail: {
         type: String,

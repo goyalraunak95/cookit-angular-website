@@ -11,13 +11,14 @@ import { Router } from '@angular/router';
 export class AuthenticationService {
 
   user: User = null;
+  token: string = null;
   isUserAuthenticated = new BehaviorSubject<boolean>(false);
   url: string = `/user`;
   constructor(private http: HttpClient, 
               private router: Router) { }
 
   signUp(values: {name: string ,email: string, password: string}) {
-    return this.http.post<User>(this.url + '/signup', {
+    return this.http.post<{user:User,token:string}>(this.url + '/signup', {
       name: values.name,
       email: values.email,
       password: values.password
@@ -37,15 +38,16 @@ export class AuthenticationService {
     ))
     .pipe( tap(
       (responseData) => {
-        this.user = responseData
-        localStorage.setItem('userData', JSON.stringify(this.user))
+        this.user = responseData.user
+        this.token=responseData.token
+        localStorage.setItem('userToken', JSON.stringify(this.token))
         this.isUserAuthenticated.next(true)
       }
     ))
   }
 
   login(values: {name: string, password: string}) {
-    return this.http.post<User>(this.url + '/login', {
+    return this.http.post<{user:User,token:string}>(this.url + '/login', {
       name: values.name,
       password: values.password
     })
@@ -61,21 +63,21 @@ export class AuthenticationService {
     ))
     .pipe( tap(
       resData => {
-        this.user = resData
-        localStorage.setItem('userData', JSON.stringify(this.user))
+        this.user = resData.user
+        this.token=resData.token
+        localStorage.setItem('userToken', JSON.stringify(this.token))
         this.isUserAuthenticated.next(true)
       }
     ))
   }
 
   autoLogin(){
-    const userData = JSON.parse(localStorage.getItem('userData'))
-    if(!userData) {
+    const userToken = JSON.parse(localStorage.getItem('userToken'))
+    if(!userToken) {
       return
     }
-    this.user = userData
+    this.token=userToken
     this.isUserAuthenticated.next(true)
-    this.getUserinfo()
   }
 
   logout() {
@@ -88,7 +90,7 @@ export class AuthenticationService {
     ))
     .subscribe(
       () => {
-        localStorage.removeItem('userData')
+        localStorage.removeItem('userToken')
         this.router.navigate(['/authentication'])
       }
     )

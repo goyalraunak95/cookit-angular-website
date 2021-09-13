@@ -11,7 +11,7 @@ import { AuthenticationService } from './authentication.service'
 })
 export class AuthenticationComponent implements OnInit {
 
-  isLoginMode = false;
+  isLoginMode = true;
   isLoading = false;
   error: string = null;
   constructor(private authenticationService: AuthenticationService, 

@@ -66,6 +66,8 @@ export class RecipeEditComponent implements OnInit {
       'recipeDetail': new FormControl(recipeDetail,Validators.required),
       'ingrediants': recipeIngred
     })
+    if(!this.editMode)
+      this.onAddIngred()
   }
   get controls(){
     return(( this.recipeForm.get('ingrediants') as FormArray ).controls);
